@@ -8,6 +8,15 @@
 
 int main(void)
 {
+	char ch;
 
-return (0);
+	for (ch = '0'; ch <= '9'; ch += 1)
+	{
+		putchar(ch);
+		putchar(',');
+		putchar(' ');
+	}
+	putchar('\n');
+
+	return (0);
 }
