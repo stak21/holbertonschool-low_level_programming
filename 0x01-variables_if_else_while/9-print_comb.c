@@ -8,12 +8,12 @@
 
 int main(void)
 {
-	char ch;
+	int ch;
 
-	for (ch = '0'; ch <= '9'; ch += 1)
+	for (ch = 48; ch <= 57; ch += 1)
 	{
 		putchar(ch);
-		if (ch != '9')
+		if (ch != 57)
 		{
 			putchar(',');
 			putchar(' ');
