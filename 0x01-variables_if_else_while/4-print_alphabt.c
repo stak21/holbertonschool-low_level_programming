@@ -8,6 +8,14 @@
 
 int main(void)
 {
+	char ch;
 
-return (0);
+	for (ch = 'a'; ch <= 'z'; ch += 1)
+	{
+		if (ch != 'q' && ch != 'e')
+		{
+			putchar(ch);
+		}
+	}
+	return (0);
 }
