@@ -8,6 +8,13 @@
 
 int main(void)
 {
+	int i;
 
-return (0);
+	for (i = '0'; i <= '9'; i += 1)
+	{
+		putchar(i);
+	}
+	putchar('\n');
+
+	return (0);
 }
