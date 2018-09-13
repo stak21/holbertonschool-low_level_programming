@@ -6,11 +6,11 @@
  */
 int main(void)
 {
-	sizeOf(char);
-	sizeOf(int);
-	sizeOf(long int);
-	sizeOf(long long int);
-	sizeOf(float);
+	sizeof(char);
+	sizeof(int);
+	sizeof(long int);
+	sizeof(long long int);
+	sizeof(float);
 	return (0);
 }
 
