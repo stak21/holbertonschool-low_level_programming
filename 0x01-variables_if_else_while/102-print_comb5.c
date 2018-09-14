@@ -8,41 +8,26 @@
 
 int main(void)
 {
-	int i = 48;
-	int j = 48;
-	int k = 48;
-	int l = 49;
+	int num;
+	int num2;
 
-	while (i <= 57)
+	for (num = 0; num < 100; num += 1)
 	{
-		while (j <= 57)
+		for (num2 = num + 1; num2 < 100; num2 += 1)
 		{
-			while (k <= 57)
+			putchar(num / 10 + '0');
+			putchar(num % 10 + '0');
+			putchar(' ');
+			putchar(num2 / 10 + '0');
+			putchar(num2 % 10 + '0');
+
+			if (num != 98 || num2 != 99)
 			{
-				while (l <= 57)
-				{
-					putchar(i);
-					putchar(j);
-					putchar(' ');
-					putchar(k);
-					putchar(l);
-					if (i != 57 || j != 56 || k != 57 || l != 57)
-					{
-						putchar(',');
-						putchar(' ');
-					}
-					l += 1;
-				}
-				k += 1;
-				l = j;
+				putchar(',');
+				putchar(' ');
 			}
-			j += 1;
-			k = i;
 		}
-		j = 48;
-		i += 1;
 	}
 	putchar('\n');
-
 	return (0);
 }
