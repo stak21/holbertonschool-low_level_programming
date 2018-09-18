@@ -1,13 +1,18 @@
-#include <stdio.h>
+#include "holberton.h"
+#include <unistd.h>
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * _abs - gets the absolute value of an integer
+ *@int
+ * Return: returns the absoulte number
  */
 
-int main(void)
+int _abs(int n)
 {
-
-return (0);
+  if (n < 0)
+    {
+      return -n;
+    }
+  else
+    return n;
 }

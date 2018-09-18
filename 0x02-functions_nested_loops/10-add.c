@@ -1,13 +1,14 @@
-#include <stdio.h>
+#include "holberton.h"
+#include <unistd.h>
 
 /**
- * main - Entry point
+ * add - adds two integers
  *
- * Return: Always 0 (Success)
+ * Return: the result
  */
 
-int main(void)
+int add(int n, int i)
 {
 
-return (0);
+return (n + i);
 }

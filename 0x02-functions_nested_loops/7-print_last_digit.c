@@ -1,13 +1,20 @@
-#include <stdio.h>
+#include "holberton.h"
+#include <unistd.h>
 
 /**
- * main - Entry point
+ * print_last_digit - prints the last digit
  *
- * Return: Always 0 (Success)
+ * Return: the last digit
  */
 
-int main(void)
+int print_last_digit(int n)
 {
-
-return (0);
+  int d;
+  if (n < 0)
+    {
+      n = -n;
+    }
+  d = n % 10;
+  _putchar(d + '0');
+  return (d);
 }
