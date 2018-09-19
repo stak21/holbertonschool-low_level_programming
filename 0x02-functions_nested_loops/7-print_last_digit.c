@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <unistd.h>
 
 /**
  * print_last_digit - prints the last digit
