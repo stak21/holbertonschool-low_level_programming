@@ -7,7 +7,7 @@
  * Return: the last digit
  */
 
-int print_last_digit(int n)
+int-Wall -pedantic -Werror -Wextra _putchar.c 4-main.c 4-isalpha.c -o 4-isalphaprint_last_digit(int n)
 {
 	int d;
 
