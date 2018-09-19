@@ -9,6 +9,7 @@
 int main(void)
 {
 	int i;
+	unsigned long int l;
 	unsigned long int j;
 	unsigned long int k;
 
@@ -17,11 +18,12 @@ int main(void)
 	printf("1, 2, 3, ");
 	for (i = 3; i < 50; i += 1)
 	{
+		l = j;
 		j += k;
 		printf("%lu", j);
 		if (i != 49)
 			printf(", ");
-		k = j;
+		k = l;
 	}
 	printf("\n");
 	return (0);
