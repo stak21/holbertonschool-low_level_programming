@@ -13,7 +13,6 @@ void print_times_table(int n)
 	int j;
 	int k;
 	int d;
-	int s;
 	int a;
 
 	if (n >= 0 && n <= 15)
@@ -30,9 +29,8 @@ void print_times_table(int n)
 				k = d / 10;
 				if (d >= 100) /* triple digits */
 				{
-					s = d / 10 % 10;
 					_putchar(k / 10 + '0');
-					_putchar(s + '0');
+					_putchar(d / 10 % 10 + '0');
 					_putchar(a + '0');
 				}
 				else if (d >= 10 && d < 100) /* double digit */
