@@ -15,6 +15,7 @@ void print_times_table(int n)
 	int d;
 	int s;
 	int a;
+
 	if (n >= 0 && n <= 15)
 	{
 		for (j = 0; j <= n; j += 1)
@@ -25,20 +26,17 @@ void print_times_table(int n)
 				d = i * j;
 				_putchar(',');
 				_putchar(' ');
+				a = d % 10;
+				k = d / 10;
 				if (d >= 100) /* triple digits */
 				{
-					k = d / 10 / 10;
-					a = d % 10;
-					s = d / 10 % 10;	
-					_putchar(k + '0');
+					s = d / 10 % 10;
+					_putchar(k / 10 + '0');
 					_putchar(s + '0');
 					_putchar(a + '0');
 				}
 				else if (d >= 10 && d < 100) /* double digit */
 				{
-					k = d / 10;
-					a = d % 10;
-
 					_putchar(' ');
 					_putchar(k + '0');
 					_putchar(a + '0');
