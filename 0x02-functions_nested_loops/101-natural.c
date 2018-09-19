@@ -8,6 +8,16 @@
 
 int main(void)
 {
+	int n;
+	int result;
 
-return (0);
+	n = 3;
+	while (n < 1024)
+	{
+		if (n % 3 == 0 || n % 5 == 0)
+			result += n;
+		n += 1;
+	}
+	printf ("%d\n", result);
+	return (0);
 }
