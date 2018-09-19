@@ -19,10 +19,13 @@ void print_times_table(int n)
 	{
 		for (j = 0; j <= n; j += 1)
 		{
-			for (i = 0; i <= n; i += 1)
+		 _putchar('0');
+			for (i = 1; i <= n; i += 1)
 			{
 						d = i * j;
-						if (d >= 100)
+						_putchar(',');
+						_putchar(' ');
+						if (d >= 100) /* triple digits */
 						{
 							k = d / 10 / 10;
 							a = d % 10;
@@ -31,23 +34,20 @@ void print_times_table(int n)
 							_putchar(s + '0');
 							_putchar(a + '0');
 						}
-						else
+						else if (d >= 10 && d < 100) /* double digit */
 						{
-							if (d > 0)
-							{
-								_putchar(' ');
-								_putchar(d / 10 + '0');
-							}
-							else if (i != 0)
-							_putchar(' ');
-							if (j == 0 && i != 0)
-						      _putchar(' ');
-							_putchar(d % 10 + '0');
+						  k = d / 10;
+						  a = d % 10;
+
+						  _putchar(' ');
+						  _putchar(k + '0');
+						  _putchar(a + '0');
 						}
-						if (i != n)
+						else /*single digit */
 						{
-							_putchar(',');
-							_putchar(' ');
+							 _putchar(' ');
+							 _putchar(' ');
+							 _putchar(d % 10 + '0');
 						}
 			}
 			_putchar('\n');
