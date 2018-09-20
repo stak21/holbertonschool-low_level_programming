@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 /**
  * main - Entry point
  *
@@ -8,8 +7,8 @@
 
 int main(void)
 {
-	long long int n;
-	long long int i;
+	long int n;
+	long int i;
 	long int result;
 
 	n = 612852475143;
