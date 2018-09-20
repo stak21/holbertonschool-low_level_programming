@@ -8,6 +8,22 @@
 
 int main(void)
 {
+	unsigned long int i;
+	unsigned long int j;
+	unsigned long int k;
+	unsigned long int l;
 
-return (0);
+	i = 3;
+	j = 2;
+	l = 2;
+	while (l < 4000000)
+	{
+		k = j;
+		j += i;
+		if (j % 2 == 0)
+			l += j;
+		i = k;
+	}
+	printf("%lu\n", l);
+	return (0);
 }
