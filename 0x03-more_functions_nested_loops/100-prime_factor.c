@@ -16,14 +16,14 @@ int main(void)
 	i = 2;
 	while (n != 1)
 	{
-			if (n % i == 0)
-			{
-				result = i;
-				n /= i;
-			}
-			else
-				i += 1;
+		if (n % i == 0)
+		{
+			result = i;
+			n /= i;
+		}
+		else
+			i += 1;
 	}
 	printf("%li\n", result);
-	return (result);
+	return (0);
 }
