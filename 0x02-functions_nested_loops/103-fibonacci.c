@@ -16,7 +16,7 @@ int main(void)
 	i = 3;
 	j = 2;
 	l = 2;
-	while (l < 4000000)
+	while (l < 10)
 	{
 		k = j;
 		j += i;
