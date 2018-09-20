@@ -2,30 +2,24 @@
 
 /**
  * print_number - prints an integer
- * @n: holds the number to print
+ * @i: holds the number to print
  */
 
 void print_number(int n)
 {
-	int div;
+	unsigned int i;
 
-	div = 1;
-	if (n == 0)
-		_putchar('0');
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -n;
+		i = -n;
 	}
-	while (div <= n)
+	else
+		i = n;
+	if (i >= 10)
 	{
-		div *= 10;
+		print_number(i / 10);
 	}
-	div /= 10;
-	while (div != 0)
-	{
-		_putchar(n / div + '0');
-		n %= div;
-		div /= 10;
-	}
+
+	_putchar(i % 10 + '0');
 }
