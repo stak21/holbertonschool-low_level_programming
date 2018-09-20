@@ -13,15 +13,17 @@ int main(void)
 	unsigned long int k;
 	unsigned long int l;
 
-	i = 3;
-	j = 2;
+	i = 2;
+	j = 3;
 	l = 2;
-	while (l < 10)
+	while (j < 4000000)
 	{
 		k = j;
 		j += i;
 		if (j % 2 == 0)
+		{
 			l += j;
+		}
 		i = k;
 	}
 	printf("%lu\n", l);
