@@ -2,7 +2,7 @@
 #include "holberton.h"
 
 /**
- * _isdigit - checks to see if a character is a digit 
+ * _isdigit - checks to see if a character is a digit
  * @c: holds the chracter to check
  *
  * Return: 1 if it is a digit
