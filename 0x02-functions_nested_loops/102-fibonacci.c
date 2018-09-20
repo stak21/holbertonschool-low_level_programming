@@ -13,8 +13,8 @@ int main(void)
 	unsigned long int j;
 	unsigned long int k;
 
-	j = 2;
-	k = 3;
+	j = 3;
+	k = 2;
 	printf("1, 2, 3, ");
 	for (i = 3; i < 50; i += 1)
 	{
