@@ -1,13 +1,22 @@
-#include "holbton"
+#include "holberton.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * *_strcpy - copies the string pointed by src including the null, to the dest
+ * @dest: the destination to copy to
+ * @src: the source to copy from
+ * Return: value: the pinter to dest
  */
 
-int main(void)
+char *_strcpy(char *dest, char *src)
 {
+	int i;
 
-return (0);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i += 1;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
