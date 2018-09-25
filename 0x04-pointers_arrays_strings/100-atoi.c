@@ -2,6 +2,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+/**
+ * _atoi - converts a string to an integer
+ * @s: holds the string
+ *
+ *Returns: the integer
+ */
 int _atoi(char *s)
 {
 	int i;
@@ -27,14 +33,12 @@ int _atoi(char *s)
 			isfirstnumber = true;
 			digit = s[i] - '0';
 			result = result * 10 + digit;
-			printf("result: %i, digit: %i ", result, digit);
 		}
 		if (s[i] < '0' || s[i] > '9')
 			if (isfirstnumber)
 				break;
 		i += 1;
 	}
-	printf("\n");
 	if (negative)
 		return (-result);
 	return (result);
