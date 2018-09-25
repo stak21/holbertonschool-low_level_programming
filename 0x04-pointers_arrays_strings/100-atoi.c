@@ -6,12 +6,12 @@
  * _atoi - converts a string to an integer
  * @s: holds the string
  *
- *Returns: the integer
+ * Return: int result
  */
 int _atoi(char *s)
 {
 	int i;
-	int result;
+	unsigned int result;
 	int digit;
 	bool isfirstnumber = false;
 	bool negative = false;
@@ -40,6 +40,6 @@ int _atoi(char *s)
 		i += 1;
 	}
 	if (negative)
-		return (-result);
+		return (result * -1);
 	return (result);
 }
