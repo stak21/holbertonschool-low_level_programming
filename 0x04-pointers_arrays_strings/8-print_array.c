@@ -1,13 +1,20 @@
-#include "holbton"
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * print_array - prints n elements of an array of itegers
+ * @a: the array
+ * @n: the number of elements
  */
 
-int main(void)
+void print_array(int *a, int n)
 {
+	int i;
 
-return (0);
+	for (i = 0; i < n; i += 1)
+	{
+			printf("%d", a[i]);
+			if (i != n - 1)
+				printf(", ");
+	}
 }
