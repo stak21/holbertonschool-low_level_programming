@@ -15,11 +15,15 @@ int _atoi(char *s)
 
 	while (s[i] != '\0')
 	{
+		if (s[i] == '-')
+		{
+			if (negative)
+				negative = false;
+			else
+				negative = true;
+		}
 		if (s[i] >= '0' && s[i] <= '9')
 		{
-			if (!isfirstnumber)
-				if (s[i - 1] == '-')
-					negative = true;
 			isfirstnumber = true;
 			digit = s[i] - '0';
 			result = result * 10 + digit;
