@@ -1,13 +1,26 @@
-#include "holbton"
+#include "holberton.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * puts_half - prints half of a string followed by a newline
+ * @str: holds the string
  */
 
-int main(void)
+void puts_half(char *str)
 {
+	int fast;
+	int slow;
 
-return (0);
+	fast = 0;
+	slow = 0;
+	while (str[fast] != '\0')
+	{
+		fast += 2;
+		slow += 1;
+	}
+	while (str[slow] != '\0')
+	{
+		_putchar(str[slow]);
+		slow += 1;
+	}
+	_putchar('\n');
 }
