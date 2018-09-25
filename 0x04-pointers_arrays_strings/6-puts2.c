@@ -1,13 +1,15 @@
-#include "holbton"
+#include "holberton.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * puts2 - prints one char out of 2
+ * @str: holds the string
  */
 
-int main(void)
+void puts2(char *str)
 {
+	int i;
 
-return (0);
+	for (i = 0; str[i] != '\0'; i += 2)
+		_putchar(str[i]);
+	_putchar('\n');
 }
