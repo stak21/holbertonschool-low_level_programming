@@ -23,7 +23,11 @@ char *_strncpy(char *dest, char *src, int n)
 		i += 1;
 		j += 1;
 	}
-	if (j < n)
-		dest[i] = '\0';
+	while (j < n)
+	{
+	printf("n:%i \n j: %i\n", n, j);
+		dest[j] = '\0';
+		j += 1;
+	}
 	return (dest);
 }
