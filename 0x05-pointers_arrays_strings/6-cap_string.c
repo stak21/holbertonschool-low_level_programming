@@ -18,7 +18,7 @@ char *cap_string(char *n)
 	firstLetter = true;
 	while (n[i] != '\0')
 	{
-		while ((isNum(n[i])) || isAlpha(n[i]) || n[i] == '-')
+		while (isNum(n[i]) || isAlpha(n[i]) || n[i] == '-')
 		{
 			if (firstLetter && isNum(n[i]))
 			{
@@ -26,7 +26,7 @@ char *cap_string(char *n)
 			}
 			else if (firstLetter && n[i] >= 'A' && n[i] <= 'Z')
 				firstLetter = false;
-			if (firstLetter)
+			if (firstLetter && n[i] != '-')
 			{
 				firstLetter = false;
 				n[i] = n[i] - 'a' + 'A';
