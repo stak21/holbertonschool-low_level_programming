@@ -2,13 +2,17 @@
 #include "holberton.h"
 
 /**
- * main - Entry point
+ * _strcmp - compares two strings
+ * @s1: holds a string
+ * @s2: holds a string
  *
- * Return: Always 0 (Success)
+ * Return: 1 if true
+ * otherwise 0
  */
 
-int main(void)
+int _strcmp(char *s1, char *s2)
 {
-
-return (0);
+	if (*s1 && *s2)
+		return (*s1 - *s2);
+	return (0);
 }

@@ -2,13 +2,23 @@
 #include "holberton.h"
 
 /**
- * main - Entry point
- *
+ * *_strncpy - copies a string
  * Return: Always 0 (Success)
  */
 
-int main(void)
+char *_strncpy(char *dest, char *src, int n)
 {
+	int i;
+	int j;
 
-return (0);
+	i = 0;
+	j = 0;
+	while (j < n && src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i += 1;
+		j += 1;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

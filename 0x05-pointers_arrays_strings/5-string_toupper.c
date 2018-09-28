@@ -2,13 +2,23 @@
 #include "holberton.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * *string_toupper - changes all lowercase letters to upper
+ * Return: the string
  */
 
-int main(void)
+char *string_toupper(char *n)
 {
+	int i;
 
-return (0);
+	i = 0;
+	while(n[i] != '\0')
+	{
+		if (n[i] >= 'a' && n[i] <= 'z')
+		{
+		n[i] = n[i] - 'a' + 'A';
+		}
+		i++;
+	}
+
+	return(n);
 }
