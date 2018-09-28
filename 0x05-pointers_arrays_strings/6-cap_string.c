@@ -3,12 +3,14 @@
 #include <stdbool.h>
 /**
  * *cap_string - captializes all words in a string
- * @s: holds a string
+ * @n: holds a string
  * Return: the pointer to the string (Success)
  */
 
 char *cap_string(char *n)
 {
+	int isNum(char);
+	int isAlpha(char);
 	bool firstLetter;
 	int i;
 
@@ -16,15 +18,14 @@ char *cap_string(char *n)
 	firstLetter = true;
 	while (n[i] != '\0')
 	{
-		
-		while ((n[i] >= '0' && n[i] <= '9') || (n[i] >= 'a' && n[i] <= 'z') || (n[i] >= 'A' && n[i] <= 'Z') || n[i] == '-')
+		while ((isNum(n[i])) || isAlpha(n[i]) || n[i] == '-')
 		{
-			if (firstLetter && n[i] >= '0' && n[i] <= '9') 
+			if (firstLetter && isNum(n[i]))
 			{
 				firstLetter = false;
 			}
 			else if (firstLetter && n[i] >= 'A' && n[i] <= 'Z')
-					firstLetter = false;
+				firstLetter = false;
 			if (firstLetter)
 			{
 				firstLetter = false;
@@ -37,4 +38,29 @@ char *cap_string(char *n)
 	}
 return (n);
 }
-
+/**
+ * isNum - checks if its a number
+ * @c: holds the character
+ * Return: 1 if its true
+ * otherwise 0
+ */
+int isNum(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+/**
+ * isAlpha - checks if its alpha
+ * @c: holds the character
+ * Return: 1 if its true
+ * otherwise 0
+ */
+int isAlpha(char c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
+}

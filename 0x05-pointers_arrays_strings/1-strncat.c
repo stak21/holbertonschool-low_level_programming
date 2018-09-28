@@ -2,7 +2,10 @@
 #include "holberton.h"
 
 /**
- * char *_strcat(char *dest, char *src)
+ * _strncat - cat only n str
+ * @dest: the dest to cat to
+ * @src: the src to cat from
+ * @n: the number of people
  * Return: Always 0 (Success)
  */
 

@@ -2,8 +2,12 @@
 #include "holberton.h"
 
 /**
- * *_strncpy - copies a string
- * Return: Always 0 (Success)
+ * _strncpy - copies a string
+ * @dest: the destination to cpy to
+ * @src: the src to cpy form
+ * @n: the number of characters to cpy
+ *
+ * Return: the pointer to the string
  */
 
 char *_strncpy(char *dest, char *src, int n)

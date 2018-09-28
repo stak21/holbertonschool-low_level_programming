@@ -2,9 +2,11 @@
 #include "holberton.h"
 
 /**
- * main - Entry point
+ * _strcat - catcatenates strings
+ * @dest: the destination to cat to
+ * @src: the src to cat from
  *
- * Return: Always 0 (Success)
+ * Return: the pointer to the character
  */
 
 char *_strcat(char *dest, char *src)
