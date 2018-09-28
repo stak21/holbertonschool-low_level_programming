@@ -2,13 +2,26 @@
 #include "holberton.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * print_number - prints an integer
+ * @n: holds the number to print
  */
 
-int main(void)
+void print_number(int n)
 {
+	int digit;
+	unsigned num;
 
-return (0);
+	if (n < 0)
+	{
+		num = - n;
+		_putchar('-');
+	}
+	else
+		num = n;
+
+	if (num > 9)
+	{
+		print_number(num / 10);
+	}		
+	_putchar(num % 10 + '0');
 }
