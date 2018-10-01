@@ -5,7 +5,7 @@
  * _memset - sets n bytes of an area with bytes
  * @s: holds the pointer
  * @b: the byte to change to
- * n: the number of addresses to change
+ * @n: the number of addresses to change
  * Return: the pointer to the address
  */
 
