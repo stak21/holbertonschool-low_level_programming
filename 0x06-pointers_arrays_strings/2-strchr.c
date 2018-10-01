@@ -11,16 +11,19 @@
 
 char *_strchr(char *s, char c)
 {
-	while (*s != c && *s)
+	int index;
+
+	index = 0;
+	while (s[index] != c && s[index] != '\0')
 	{
-		s++;
+		index += 1;
 	}
-	if (*s != '\0')
+	if (s[index] != '\0')
 	{
-		return (s);
+		return (&s[index]);
 	}
 	else
 	{
-		return ('\0');
+		return (NULL);
 	}
 }
