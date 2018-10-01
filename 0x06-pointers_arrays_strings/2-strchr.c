@@ -18,5 +18,8 @@ char *_strchr(char *s, char c)
 	if (*s)
 		return (s);
 	else
-		return ('\0');
+	{
+		*s = '\0';
+		return (s);
+	}
 }
