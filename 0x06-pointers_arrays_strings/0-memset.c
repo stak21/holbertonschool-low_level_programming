@@ -8,7 +8,7 @@
  * n: the number of addresses to change
  * Return: the pointer to the address
  */
-	
+
 char *_memset(char *s, char b, unsigned int n)
 {
 	unsigned int i;
