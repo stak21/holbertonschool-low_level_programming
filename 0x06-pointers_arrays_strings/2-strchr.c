@@ -15,12 +15,12 @@ char *_strchr(char *s, char c)
 	{
 		s++;
 	}
-	if (*s)
+	if (*s != '\0')
 		return (s);
 	else
 	{
-		s = NULL;
 		printf("%p", s);
+		printf("null");
 		return (s);
 	}
 }
