@@ -1,0 +1,262 @@
+Last login: Thu Sep 27 12:09:36 on ttys000
+vagrant up%                                                                                          ➜  ~  vagrant ssh
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-157-generic x86_64)
+1 # ~/.profile: executed by the command interpreter for login shells.
+2 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+3 # exists.
+4 # see /usr/share/doc/bash/examples/startup-files for examples.
+5 # the files are located in the bash-doc package.
+6
+7 # the default umask is set in /etc/profile; for setting the umask
+8 # for ssh logins, install and configure the libpam-umask package.
+9 #umask 022
+10
+11 # if running bash
+12 if [ -n "$BASH_VERSION" ]; then
+13     # include .bashrc if it exists
+14     if [ -f "$HOME/.bashrc" ]; then
+15         . "$HOME/.bashrc"
+16     fi
+17 fi
+18
+19 # set PATH so it includes user's private bin if it exists
+20 if [ -d "$HOME/bin" ] ; then
+21     PATH="$HOME/bin:$PATH"
+22 fi
+
+#alias
+alias ..="cd .."
+alias ..l="cd .. && ls"
+alias ep="vim ~/.profile"
+alias sp="source ~/.profile"
+alias cdh="cd ~/holbertonschool-low_level_programming && ls"
+alias lc ="cd $1 && ls"
+alias gp="git push origin master"
+alias gs="git status"
+alias gr="git rm"
+
+#Note Change the author  on line 68
+#creates a README template
+nr() {
+  #creates template
+  echo "Enter title: "
+  read title
+  echo "#$title" > README.md
+  echo "---" >> README.md
+  echo "## Description" >> README.md
+  echo "
+This project in the low_level_programming series is about:
+" >> README.md
+  cat <<EOF
+EOF >> README.md
+---
+## Description
+#Enter your description here
+EOF
+  echo "Type decription, Ctrl+D to end"
+  cat >> README.md
+  cat <<EOF
+EOF >> README.md
+---
+EOF
+#this will append * to your description
+#6 being the line to start on, $=EOF, &=append match,^.* = match
+   sed -i '7,$s/^.*$/*&\n/' README.md
+echo "---
+File|Task
+---|---" >> README.md
+# Here users can create just the task or task and answer || cancel
+    echo "enter 1 || 2 : onlyTask = 1, task and description = 2"
+    echo "00 = cancel"
+    echo "Special Case: Create files"
+    echo "Enter 11: task + files"
+    echo "Enter 22: task + answer + files"
+    read ans
+    while [[ $ans != @(1|2|00||11|22) ]]
+    do
+        echo "enter 1 || 2 : onlyTask = 1, task and description = 2"
+        echo "00 = cancel ; else I will ask again"
+        echo "Special Case: Create files"
+        echo "Enter 11: task + files"
+        echo "Enter 22: task + answer + files"
+        read ans
+    done
+#00 will delete the README
+    if (($ans == 00)); then
+        rm ./README.md
+        echo "I have deleted ./README.md. Have a nice day"
+        return 0;
+    fi
+    echo "How many tasks are there?"
+    read number
+#1 will just input the task
+    if (($ans == 1 || $ans == 11)); then
+        for ((i = 1; i <= number; i++))
+        do
+            echo "Type in task title"
+            read task
+            echo "$task | " >> README.md
+            if (($ans == 11)); then
+               crFile $task
+            fi
+        done
+#2 will do both task and description
+    elif (($ans == 2 || $ans == 22)); then
+        for ((i = 1; i <= number; i++))
+        do
+            echo "Type in task title"
+            read task
+            echo "Type in the description of the task or answer"
+            read answer
+            echo "$task | $answer" >> README.md
+            if (($ans == 22)); then
+                crFile $task
+            fi
+        done
+    fi
+    echo "
+## Author" >>README.md
+echo " Shoji Takashima" >> README.md # EDIT ME
+cat README.md
+askCommit
+}
+
+askCommit() {
+    echo "Enter: <enter> : to git commit, 00 to quit, 1 to delete the README"
+    read ans
+    while [[ $ans != @(""|00|1) ]]
+    do
+        echo "Enter: <enter> : to git commit, 00 to quit, 1 to delete the README"
+        read ans
+    done
+
+if (($ans == 00)); then
+  return 0
+elif (($ans == 1)); then
+    rm ./README.md
+    echo "I have deleted ./README.md. Have a nice day"
+    return 0;
+else
+    git add ./README.md
+    git commit -m "Added README.md"
+    git push origin master
+fi
+}
+
+crFile() {
+echo "#!/bin/bash" > ./$task
+echo "" >> ./$task
+}
+
+#calls both betty
+betty()
+{
+	echo "betty-doc"
+	echo "---------"
+	betty-doc $1
+	echo ""
+	echo "betty-style"
+	echo "-----------"
+	betty-style $1
+}
+
+#shorthand for git commit and git push
+gc()
+{
+	git add $1
+	git status
+	echo "Type in message"
+	read message
+	git commit -m "$message"
+	gp
+}
+
+#shorthand to stage all files and confirms if you want to commit and push
+gca()
+{
+	git add ./
+	git status
+	echo "Do you want to commit all?"
+	echo "press <enter>"
+	echo "$1"
+	read ans
+	echo "$1"
+	echo "$ans"
+	if (($ans == '1')); then
+		echo "aborting commit"
+		return
+	fi
+	echo "enter message: "
+	read message
+	echo "$message"
+	git commit -m "$message"
+	gp
+}
+
+crfile()
+{
+	touch $1
+	chmod u+x ./$1
+}
+
+#adds code to specific lines in the file
+editf()
+{
+	sed -i $2i$3 $1 #2 line and message and file
+}
+
+#creates a C template
+mkCmain()
+{
+	echo "#include <stdio.h>" > $1
+	echo "#include \"holberton.h\"">> $1
+	echo "" >> $1
+	echo "/**
+	* main - Entry point
+	*
+	* Return: Always 0 (Success)
+	*/
+	" >> $1
+	echo "int main(void)
+	{
+	
+		return (0);
+	}" >> $1
+}
+#creates a c template
+mkC()
+{
+	echo "#include <stdio.h>" > $1
+	echo "#include \"holberton.h\"">> $1
+	echo "" >> $1
+	echo "/**
+	* temp
+	*/
+	" >> $1
+	echo "temp()
+	{
+	
+		return (0);
+	}" >> $1
+}
+#compiles using options and output main
+gcca()
+{
+	gcc -Wall -Wextra -Werror -pedantic $1 $2 $3 $4 $5 -o main
+}
+
+#changes and lists to the next directory
+cdl()
+{
+	builtin cd "$@" && ls
+}
+
+#Removes files and stores the file name into removedfiles.txt
+rf()
+{
+	rm $1 $2 $3 $4
+	echo "$1 $2 $3 $4" > removedfiles.txt
+	gs
+	echo "removedfiles______________"
+	cat removedfiles.txt
+}
