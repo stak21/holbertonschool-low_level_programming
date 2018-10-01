@@ -19,7 +19,8 @@ char *_strchr(char *s, char c)
 		return (s);
 	else
 	{
-		*s = '\0';
+		s = NULL;
+		printf("%p", s);
 		return (s);
 	}
 }
