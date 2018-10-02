@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "holberton.h"
 
 /**
@@ -12,21 +13,24 @@ unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int count;
 	int index;
+	bool found;
 
 	count = 0;
-	index = 0;
-	while (*s >= 'a' && *s <= 'z')
+	do
 	{
+		index = 0;	
+		found = false;
 		while (accept[index])
 		{
-			if (accept[index] == *s)
+		 	if (accept[index] == *s)
 			{
+				found = true;
 				count += 1;
 			}
-			index++;
+		index += 1;
 		}
-		index = 0;
-		s++;
-	}
+		if (found)
+			s++;
+	} while (found);
 	return (count);
 }
