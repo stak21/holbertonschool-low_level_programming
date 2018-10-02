@@ -20,7 +20,7 @@ char *_strchr(char *s, char c)
 	}
 	if (s[index] != '\0')
 	{
-		return ((s + i));
+		return ((s + index));
 	}
 	else
 	{
