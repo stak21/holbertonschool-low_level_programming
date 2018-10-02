@@ -33,14 +33,13 @@ This project in the System engineering & DevOps series is about:
 ---
 File|Task
 ---|---
-0-preprocessor | 
-1-compiler | 
-2-assembler | 
-3-name | 
-4-puts.c | 
-5-printf.c | 
- | 
-6-size.c | 
+0-preprocessor | a script running gcc -E, which stops after the preprocessor 
+1-compiler | a script running gcc -c, which compiles, but does not link
+2-assembler | a script running gcc -S, which generates the assembly code
+3-name | a script that compiles a c file and creates an exe
+4-puts.c | a c program printing a string using puts()
+5-printf.c | a c program printing a string using printf()
+6-size.c | a c program printing the size of various types using printf()
 
 ## Author
  Shoji Takashima
