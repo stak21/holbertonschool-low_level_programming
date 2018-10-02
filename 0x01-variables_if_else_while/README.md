@@ -37,17 +37,19 @@ This project in the System engineering & DevOps series is about:
 ---
 File|Task
 ---|---
-0-positive_or_negative.c | 
-1-last_digit.c | 
-2-print_alphabet.c | 
-4-print_alphabt.c | 
-3-print_alphabets.c | 
-5-print_numbers.c | 
-6-print_numberz.c | 
-7-print_tebahpla.c | 
-8-print_base16.c | 
- | 
-9-print_comb.c | 
-
+0-positive_or_negative.c | given a random number, print if its positive, negative, or 0
+1-last_digit.c | given a random number, print the last digit of that number
+2-print_alphabet.c | a c program that prints the alphabet with putchar() 
+4-print_alphabt.c | a c program that prints the alphabet except for the characters 'q' & 'e' using putchar
+3-print_alphabets.c | a c program that prints both low and uppercase alphabet using putchar()
+5-print_numbers.c | a c program that prints 0-9 using putchar()
+6-print_numberz.c | a c program that prints 0-9 using putchar()
+7-print_tebahpla.c | a c program that prints the alphabet backwards using putchar()
+8-print_base16.c | a c program that prints the hexadecimal 1-16 using putchar
+9-print_comb.c | a c program that prints all possible combinations of a single digit number
+10-print_comb2.c | a c program that prints the numbers 00 to 99 using only a max of 5 putchar
+100-print_comb3.c | a program that prints all possible different combinations of two digits
+101-print_comb4.c | a program that prints all possible combinations of three digits
+102-print_comb5.c | a c program that prints all possible combinations of two two-digit numbers
 ## Author
  Shoji Takashima
