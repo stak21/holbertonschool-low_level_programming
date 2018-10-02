@@ -16,18 +16,17 @@ unsigned int _strspn(char *s, char *accept)
 	bool found;
 
 	count = 0;
-	do
-	{
-		index = 0;	
+	do {
+		index = 0;
 		found = false;
 		while (accept[index])
 		{
-		 	if (accept[index] == *s)
+			if (accept[index] == *s)
 			{
 				found = true;
 				count += 1;
 			}
-		index += 1;
+			index += 1;
 		}
 		if (found)
 			s++;
