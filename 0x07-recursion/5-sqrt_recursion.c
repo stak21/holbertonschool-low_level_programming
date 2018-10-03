@@ -37,5 +37,4 @@ int actual_sqrt(int i, int cmp)
 	{
 		result = actual_sqrt(i + 1, cmp);
 	}
-	return (result);
-}
+	return (result);}
