@@ -39,7 +39,7 @@ int get_len(char *s)
 
 int actually_is_palin(char *s, int len)
 {
-	if (len >= 0)
+	if (len >= -1)
 	{
 		if (*s == *(s + len))
 		{
