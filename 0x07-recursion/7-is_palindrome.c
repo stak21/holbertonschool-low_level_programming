@@ -34,6 +34,7 @@ int get_len(char *s)
 * actually_is_palin - helper function for actually is palin
 * @s: the pointer to the string
 * @len: holds the length of the string
+* @start: holds the beginning of the string
 * Return: true or false
 */
 
