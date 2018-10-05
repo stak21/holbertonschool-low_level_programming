@@ -43,12 +43,15 @@ int actually_is_palin(char *s, int len, int start)
 	{
 		if (s[start] == s[len])
 		{
+
 			len -= 1;
 			start += 1;
-			actually_is_palin(s + 1, len, start);
+			return (actually_is_palin(s, len, start));
 		}
 		else
+		{
 			return (0);
+		}
 	}
 	return (1);
 }
