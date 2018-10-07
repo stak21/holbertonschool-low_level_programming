@@ -8,7 +8,7 @@
 
 int climbTower(int x)
 {
-	int coins, floor, chairs, treasure;
+	int floor, chairs, treasure;
 
 	floor = x;
 	if (x % 2 == 0) /* This just sets each floor with a chair */

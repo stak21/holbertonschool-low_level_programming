@@ -13,7 +13,7 @@ void print_diagsums(int *a, int size)
 	int j;
 	int result1;
 	int result2;
-
+	int k;
 	i = j = result1 = result2 = 0;
 	for (; i < size * size; i += size + 1)
 	{
@@ -22,4 +22,9 @@ void print_diagsums(int *a, int size)
 		result2 += a[j];
 	}
 	printf("%d, %d\n", result1, result2);
+	
+	printf("\n\n TEST: garbage value %d", k);
+
+	k = 0;
+	printf("\n Test: good value %i", k);
 }
