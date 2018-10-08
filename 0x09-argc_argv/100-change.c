@@ -36,13 +36,13 @@ int mkC(int c)
 	}
 	if (c == 0)
 		return (0);
-	if (c % 25 != c)
+	if (c - 25 >= 0)
 		return (1 + mkC(c - 25));
-	else if (c % 10 != c)
+	else if (c - 10 >= 0)
 		return (mkC(c - 10) + 1);
-	else if (c % 5 != c)
+	else if (c - 5 >= 0)
 		return (1 + mkC(c - 5));
-	else if (c % 2 != c)
+	else if (c - 2 >= 0)
 		return (1 + mkC(c - 2));
 	else
 		return (c);
