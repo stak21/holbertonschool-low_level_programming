@@ -30,10 +30,8 @@ int main(int argc, char **argv)
 
 int mkC(int c)
 {
-	printf("%i\n", c);
 	if (c < 0)
 	{
-		printf("0\n");
 		return (0);
 	}
 	if (c == 0)
