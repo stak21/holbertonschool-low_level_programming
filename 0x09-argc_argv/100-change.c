@@ -42,6 +42,8 @@ int mkC(int c)
 		return (mkC(c - 10) + 1);
 	else if (c % 5 != c)
 		return (1 + mkC(c - 5));
+	else if (c % 2 != c)
+		return (1 + mkC(c - 2));
 	else
 		return (c);
 }
