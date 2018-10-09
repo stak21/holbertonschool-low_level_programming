@@ -31,6 +31,5 @@ char *_strdup(char *str)
 		j += 1;
 	}
 	ret_ptr[j] = *str;
-	printf("%i%i\n", i, j);
 	return (ret_ptr);
 }
