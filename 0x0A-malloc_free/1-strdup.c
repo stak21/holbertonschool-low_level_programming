@@ -16,11 +16,13 @@ char *_strdup(char *str)
 
 	j = 0;
 	i = 0;
+	if (str == NULL)
+		return (NULL);
 	while (str[i])
 		i += 1;
 	ret_ptr = malloc(i * sizeof(char) + 1);
 
-	if (ret_ptr == NULL || str == NULL)
+	if (ret_ptr == NULL)
 		return (NULL);
 	while (*str)
 	{
@@ -28,6 +30,7 @@ char *_strdup(char *str)
 		str++;
 		j += 1;
 	}
-	ret_ptr[i] = *str;
+	ret_ptr[j] = *str;
+	printf("%i%i\n", i, j);
 	return (ret_ptr);
 }
