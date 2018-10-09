@@ -18,7 +18,6 @@ char *create_array(unsigned int size, char c)
 	ret_arr = malloc(size * sizeof(char));
 	if (ret_arr == NULL || size == 0)
 	{
-		printf("Can't allocate enough memory");
 		return (NULL);
 	}
 	for (i = 0; i < size; i += 1)
