@@ -19,7 +19,7 @@ char *create_array(unsigned int size, char c)
 	if (ret_arr == NULL)
 	{
 		printf("Can't allocate enough memory");
-		return (ret_arr);
+		return (NULL);
 	}
 	for (i = 0; i < size; i += 1)
 		ret_arr[i] = c;
