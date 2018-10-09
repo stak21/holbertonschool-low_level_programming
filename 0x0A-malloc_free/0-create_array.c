@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
 #include "holberton.h"
 
@@ -14,7 +15,12 @@ char *create_array(unsigned int size, char c)
 	char *ret_arr;
 	unsigned int i;
 
-	ret_arr = malloc(size * sizeof(char));
+	ret_arr = malloc(size * sizeof(char) + 1);
+	if (ret_arr == NULL)
+	{
+		printf("Can't allocate enough memory"); 
+		return (ret_arr);
+	}
 	for (i = 0; i < size; i += 1)
 		ret_arr[i] = c;
 
