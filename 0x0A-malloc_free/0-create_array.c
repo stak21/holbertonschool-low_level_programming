@@ -15,10 +15,10 @@ char *create_array(unsigned int size, char c)
 	char *ret_arr;
 	unsigned int i;
 
-	ret_arr = malloc(size * sizeof(char) + 1);
+	ret_arr = malloc(size * sizeof(char));
 	if (ret_arr == NULL)
 	{
-		printf("Can't allocate enough memory"); 
+		printf("Can't allocate enough memory");
 		return (ret_arr);
 	}
 	for (i = 0; i < size; i += 1)
