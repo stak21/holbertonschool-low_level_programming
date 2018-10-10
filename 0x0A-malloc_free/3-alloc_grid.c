@@ -14,11 +14,16 @@ int **alloc_grid(int width, int height)
 	int **ret_ptr;
 	int i;
 	int j;
-
+	if (height <= 0 || width <= 0)
+		return (NULL);
 	ret_ptr = malloc(sizeof(void *) * height);
+	if (ret_ptr == NULL)
+		return (NULL);
 	for (i = 0; i < height; i += 1)
 	{
 		ret_ptr[i] = malloc(sizeof(int) * width);
+		if (ret_ptr[i] == NULL)
+			return (NULL);
 		for (j = 0; j < width; j += 1)
 			ret_ptr[i][j] = 0;
 	}
