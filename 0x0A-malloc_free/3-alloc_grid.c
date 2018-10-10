@@ -15,8 +15,6 @@ int **alloc_grid(int width, int height)
 	int i;
 	int j;
 
-	if (height <= 0 || width <= 0)
-		return (NULL);
 	ret_ptr = malloc(sizeof(void *) * height);
 	if (ret_ptr == NULL)
 		return (NULL);
@@ -25,6 +23,11 @@ int **alloc_grid(int width, int height)
 		ret_ptr[i] = malloc(sizeof(int) * width);
 		if (ret_ptr[i] == NULL)
 		{
+			while (i)
+			{
+				free(ret_ptr[i]);
+				i--;
+			}
 			free(ret_ptr);
 			return (NULL);
 		}
