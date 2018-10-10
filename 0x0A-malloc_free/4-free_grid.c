@@ -1,13 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "holberton.h"
 
 /**
-*
-*
+* free_grid - frees the memory allocated by alloc-grid
+* @grid: a pointer to grid
+* @height: holds the height of the grid
 */
 
-()
+void free_grid(int **grid, int height)
 {
-
-	return (0);
+int i;
+if (grid == NULL)
+	return;
+for (i = 0; i < height; i += 1)
+	free(grid[i]);
+free(grid);
 }
