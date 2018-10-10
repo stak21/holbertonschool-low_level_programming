@@ -30,7 +30,7 @@ char *argstostr(int ac, char **av)
 		len += j;
 		j = 0;
 	}
-	ret_ptr = malloc(sizeof(char) * len + 1 + len);
+	ret_ptr = malloc(sizeof(char) * len + 1 + ac);
 
 		for (i = 0; i < ac; i += 1)
 		{
