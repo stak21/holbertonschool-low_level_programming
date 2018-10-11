@@ -7,7 +7,7 @@
 * @s1: holds the first string
 * @s2: holds the second string
 * @n: holds the unsigned number of characters to concatenate
-* Return a pointer to the new string
+* Return: a pointer to the new string
 */
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
@@ -40,5 +40,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		ret_ptr[i + j] = s2[j];
 		j += 1;
 	}
+	ret_ptr[i + j] = '\0';
 	return (ret_ptr);
 }
