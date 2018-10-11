@@ -11,6 +11,9 @@
 
 int main(int argc, char **argv)
 {
+	printf("%p\n", argv[1]);
+	printf("%i\n", atoi(argv[1]));
+	printf("\n%c", *argv[1]);
 	if (argc >= 3)
 	{
 		printf("%i\n", atoi(argv[1]) * atoi(argv[2]));

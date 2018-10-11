@@ -15,20 +15,15 @@ int **alloc_grid(int width, int height)
 	int i;
 	int j;
 
-	if (width == 0 || height == 0)
-		return (NULL);
 	ret_ptr = malloc(sizeof(void *) * height);
 	if (ret_ptr == NULL)
-	{
-		free(ret_ptr);
 		return (NULL);
-	}
 	for (i = 0; i < height; i += 1)
 	{
 		ret_ptr[i] = malloc(sizeof(int) * width);
 		if (ret_ptr[i] == NULL)
 		{
-			while (i >= 0)
+			while (i)
 			{
 				free(ret_ptr[i]);
 				i--;
