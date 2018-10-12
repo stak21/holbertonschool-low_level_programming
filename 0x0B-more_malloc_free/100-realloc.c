@@ -27,12 +27,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		free(ptr);
 		return (NULL);
 	}
-	ret_ptr = malloc(sizeof(char) * new_size);
+	ret_ptr = malloc(new_size);
 	if (ret_ptr == NULL)
 		return (NULL);
 	if (!len)
 		len = -len;
-	while (i < len)
+	while (i <= len)
 	{
 		*((char *)ret_ptr + i) = *((char *)ptr + i);
 		i += 1;
