@@ -1,14 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "holberton.h"
+#ifndef header_file_abs
+#define header_file_abs
+#define ABS(x) ((x) < 0 ? -(x) : (x))
 
-/**
-*
-*
-*/
-
-()
-{
-
-	return (0);
-}
+#endif /*ABS func*/
