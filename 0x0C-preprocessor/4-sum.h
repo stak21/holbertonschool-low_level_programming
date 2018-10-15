@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "holberton.h"
+#ifndef SUM
+#define SUM(x, y) (x) + (y)
 
-/**
-*
-*
-*/
-
-()
-{
-
-	return (0);
-}
+#endif /*sum*/
