@@ -7,6 +7,7 @@
 * @age: holds the age of the dog
 * @owner: holds the pointer to the owner
 */
+typedef struct dog dog_t;
 struct dog
 {
 	char *name;
