@@ -25,7 +25,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 		i += 1;
 	while (owner[j] != '\0')
 		j += 1;
-		printf("%i, %i\n", i, j);
 	ret_dog->name = malloc(i * sizeof(char));
 	ret_dog->owner = malloc(j * sizeof(char));
 	for (k = 0; k < i; k += 1)
