@@ -15,8 +15,8 @@ File|Task
 ---|---
 0-print_name.c | prints a name
 1-array_iterator.c | Write a function that executes a function given as a parameter on each element of an array.
-2-int_index.c | 
-Write a function that searches for an integer. | 
+2-int_index.c | Write a function that searches for an integer. 
+3-calc.h | Calculates integers
 
 ## Author
  Shoji Takashima
