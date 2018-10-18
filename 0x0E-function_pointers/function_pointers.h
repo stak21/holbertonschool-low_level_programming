@@ -10,4 +10,5 @@ void print_elem_hex(int elem);
 int is_98(int elem);
 int is_strictly_positive(int elem);
 int abs_is_98(int elem);
+int (*get_op_func(char *s))(int, int);
 #endif
