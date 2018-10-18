@@ -3,7 +3,8 @@
 #include "3-calc.h"
 /**
 * main - Entry point
-*
+* @ac: holds the number of arguments
+* @av: holds the strings
 * Return: Always 0 (Success)
 */
 
@@ -11,6 +12,7 @@ int main(int ac, char **av)
 {
 	int num1, num2;
 	char op;
+
 	if (ac != 4)
 	{
 		printf("Error\n");
