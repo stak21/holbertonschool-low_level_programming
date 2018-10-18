@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "function_pointers.h" 
 #include "3-calc.h"
 /**
 * main - Entry point
@@ -20,14 +19,16 @@ int main(int ac, char **av)
 	op = av[2][0];
 	num1 = atoi(av[1]);
 	num2 = atoi(av[3]);
+	if (av[2][1])
+	{
+		printf("Error\n");
+		exit(99);
+	}
 	if ((num2 == 0 && op == '/') || (num2 == 0 && op == '%'))
 	{
 		printf("Error\n");
 		exit(100);
 	}
-/*	if (op != '/' && op != '%' && op != '-' && op != '+' && op != '*')
-		return (NULL);
-		*/
 	printf("%i\n", get_op_func(av[2])(num1, num2));
 
 	return (0);
