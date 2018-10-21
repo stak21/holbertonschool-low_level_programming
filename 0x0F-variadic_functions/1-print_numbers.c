@@ -4,7 +4,7 @@
 #include "variadic_functions.h"
 
 /**
-*  print_numbers - only prints numbers 
+*  print_numbers - only prints numbers
 * @separator: the string to be printed between numbers
 * @n: holds the number of arguments
 */
@@ -14,7 +14,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	unsigned int i;
 	va_list arg;
-	
+
 	if (separator == NULL)
 		return;
 	va_start(arg, n);
