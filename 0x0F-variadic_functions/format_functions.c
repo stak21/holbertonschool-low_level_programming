@@ -42,5 +42,5 @@ void char_ptr_format(va_list var)
 	str = va_arg(var, char *);
 	if (!str)
 		str = "(nil)";
-		printf("%s", str); 
+	printf("%s", str); 
 }
