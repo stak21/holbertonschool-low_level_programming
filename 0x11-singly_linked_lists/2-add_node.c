@@ -1,14 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "holberton.h"
+#include <string.h>
+#include "lists.h"
 
 /**
-*
-*
+* add_node - add a node to the beginning of a linked list
+* @head: a pointer to a linked list
+* @str: holds a string
+* Return: a linked list
 */
 
-()
+list_t *add_node(list_t **head, const char *str)
 {
+	char *copy_str;
+	list_t *ret_list;
 
-	return (0);
+	ret_list = malloc(sizeof(list_t));
+	if (ret_list == NULL)
+		return (NULL);
+	copy_str = strdup(str);
+	ret_list->str = copy_str;
+	ret_list->next = *head;
+	ret_list->len = strlen(copy_str);
+	*head = ret_list;
+	return (*head);
 }
