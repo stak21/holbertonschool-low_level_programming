@@ -14,12 +14,14 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 	unsigned int i;
 	listint_t *nxt_ptr;
 
-	if (!head)
-		return (NULL);
 	nxt_ptr = head;
 
 	for (i = 0; i < index; i += 1)
+	{
+		if (nxt_ptr == NULL)
+			return (NULL);
 		nxt_ptr = nxt_ptr->next;
+	}
 
 	return (nxt_ptr);
 }
