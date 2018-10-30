@@ -17,7 +17,10 @@ size_t listint_len(const listint_t *h)
 	nxt_ptr = h;
 
 	while (nxt_ptr != NULL)
+	{
+		nxt_ptr = nxt_ptr->next;
 		nodeCount += 1;
+	}
 
 	return (nodeCount);
 }
