@@ -14,14 +14,13 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	unsigned int count, difference;
 
-	count = 0;
 	difference = n ^ m;
+	count = 0;
 	while (difference)
 	{
 		if ((difference & 1) == 1)
 			count += 1;
 		difference >>= 1;
 	}
-		
 	return (count);
 }
