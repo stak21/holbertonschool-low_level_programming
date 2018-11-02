@@ -16,11 +16,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 
 	difference = n ^ m;
 	count = 0;
-	while (difference)
-	{
-		if ((difference & 1) == 1)
-			count += 1;
-		difference >>= 1;
-	}
+	for (count = 0; difference != 0; count += 1)
+		difference &= (difference - 1);
 	return (count);
 }
