@@ -37,7 +37,7 @@ int main(void)
 		}
 		l = y1;
 		y1 += x1;
-		printf("%lu", y1);
+		printf("%lu,", y1);
 		if (last_digit > 0 && last_digit < 100)
 			printf("%i", last_digit);
 		printf(" ");
