@@ -29,6 +29,7 @@ size_t free_listint_safe(listint_t **h)
 
 		free(free_ptr);
 	}
+	size += 1;
 	free(slow_ptr);
 	*h = NULL;
 	return (size);
