@@ -30,6 +30,7 @@ size_t print_listint_safe(const listint_t *head)
 		fast_ptr = fast_ptr->next;
 	}
 	printf("[%p] %i\n", (void *)slow_ptr, slow_ptr->n);
+	size += 1;
 	if (fast_ptr)
 		printf("-> [%p] %i\n", (void *)fast_ptr, fast_ptr->n);
 
