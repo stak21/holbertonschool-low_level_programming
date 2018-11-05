@@ -11,6 +11,7 @@ int main(void)
 	int i;
 	int last_digit;
 	unsigned long int y1, y2, x1, l, x2;
+
 	y1 = 2;
 	x1 = 1;
 	printf("1, 2, ");
@@ -23,17 +24,16 @@ int main(void)
 				y1 = y1 / 100;
 				x1 = x1 / 100;
 			}
-	
+
 
 				y2 = y1 % 100;
 				x2 = 1;
-				printf("\ny1: %lu x1: %lu y2: %lu x2: %lu", y1, x1, y2, x2);
 			if (y2 + x2 >= 10000)
 			{
 				y1 += 1;
 			}
 			else
-				last_digit = y2+ x2;
+				last_digit = y2 + x2;
 		}
 		l = y1;
 		y1 += x1;
