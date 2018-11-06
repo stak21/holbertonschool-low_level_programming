@@ -19,6 +19,9 @@ char  **strtow(char *str)
 	count = 0;
 	start = i = 0;
 	found = 0;
+
+	if (str == NULL)
+		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (str[i] == ' ' || str[i + 1] == '\0')
@@ -37,6 +40,8 @@ char  **strtow(char *str)
 	}
 	i = 0;
 	words = malloc(sizeof(char *) * count + 1);
+	if (!words)
+		return (NULL);
 	count = 0;
 
 	while (str[i] != '\0')
@@ -46,6 +51,8 @@ char  **strtow(char *str)
 			if (found)
 			{
 				cpy_str(i - start + 1, str + start, words + count);
+				if (!(words + count))
+					return (NULL);
 				count += 1;
 				start = i + 1;
 				found = 0;
@@ -79,6 +86,8 @@ void cpy_str(int end, char *s, char **word_box)
 	int i;
 
 	(*word_box) = malloc(sizeof(char) * end);
+	if (!(*word_box))
+		return;
 	for (i = 0; i < end - 1; i += 1)
 	{
 		(*word_box)[i] = s[i];
