@@ -78,8 +78,8 @@ void cpy_str(int end, char *s, char **word_box)
 {
 	int i;
 
-	(*word_box) = malloc(sizeof(char) * end + 1);
-	for (i = 0; i < end; i += 1)
+	(*word_box) = malloc(sizeof(char) * end);
+	for (i = 0; i < end - 1; i += 1)
 	{
 		(*word_box)[i] = s[i];
 	}
