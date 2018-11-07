@@ -47,6 +47,7 @@ int main(int argc, char **argv)
 		if (res1 == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			free(buf);
 			exit(98);
 		}
 
@@ -54,6 +55,7 @@ int main(int argc, char **argv)
 		if (!res2)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			free(buf);
 			exit(99);
 		}
 	} while (res1 == BUF_SIZE);
@@ -63,12 +65,14 @@ int main(int argc, char **argv)
 	if (res1 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error Can't close fd %i\n", fd);
+			free(buf);
 		exit(100);
 	}
 	res1 = close(fd1);
 	if (res1 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error Can't close fd %i\n", fd);
+			free(buf);
 		exit(100);
 	}
 	free(buf);
