@@ -10,13 +10,13 @@
 
 int main(int argc, char **argv)
 {
-	int fd, fd1, res, i;
+	int fd, fd1, res1, res2, i;
 	char *buf;
 
 	i = 0;
 	if (argc != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	/* open from */
@@ -24,13 +24,13 @@ int main(int argc, char **argv)
 	/* make into a func */
 	if (fd1 == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	fd = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 	if (fd == -1)
 	{
-		dprintf(2, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 
@@ -40,34 +40,35 @@ int main(int argc, char **argv)
 
 	/* reads into buffer BUF_SIZE at a time until the whole file is read */
 	do {
-		res = read(fd1, buf, BUF_SIZE);
-		i += res;
-		if (res == -1)
+		res1 = read(fd1, buf, BUF_SIZE);
+		if (res == 0)
+			break;
+		i += res1;
+		if (res1 == -1)
 		{
-			dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
 
-		res = write(fd, buf, res);
-		if (!res)
+		res2 = write(fd, buf, res1);
+		if (!res2)
 		{
-			dprintf(2, "Error: Can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
-	} while (res == BUF_SIZE);
-buf[i] = '\0';
+	} while (res1 == BUF_SIZE);
 
 	/* open to */
-	res = close(fd);
-	if (res == -1)
+	res1 = close(fd);
+	if (res1 == -1)
 	{
-		dprintf(2, "Error Can't close fd %i\n", fd);
+		dprintf(STDERR_FILENO, "Error Can't close fd %i\n", fd);
 		exit(100);
 	}
-	res = close(fd1);
-	if (res == -1)
+	res1 = close(fd1);
+	if (res1 == -1)
 	{
-		dprintf(2, "Error Can't close fd %i\n", fd);
+		dprintf(STDERR_FILENO, "Error Can't close fd %i\n", fd);
 		exit(100);
 	}
 	free(buf);
