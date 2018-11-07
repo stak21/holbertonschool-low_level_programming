@@ -19,18 +19,18 @@ int create_file(const char *filename, char *text_content)
 
 	if (fd == -1)
 		return (-1);
-	
+
 	if (!text_content)
 		return (1);
 	len = 0;
 	while (text_content[len] != '\0')
 		len += 1;
 
-	res = write (fd, text_content, len); 
+	res = write(fd, text_content, len);
 	if (res != len)
 		return (-1);
 	res = close(fd);
-	if (res == - 1)
+	if (res == -1)
 		exit(-1);
 
 	return (1);
