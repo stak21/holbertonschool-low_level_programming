@@ -16,27 +16,31 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (filename == NULL)
 		return (0);
+	/* open */
 
 	fd = open(filename, O_RDONLY);
 
 	if (fd == -1)
 		return (0);
+
 	buf = malloc(sizeof(char) * letters);
 	if (!buf)
 		return (0);
 
+	/* read into buf */
 	read(fd, buf, letters);
 	buf[letters] = '\0';
-	if ((size_t)write(2, buf, letters) != letters)
-		return (0);
 
+	for (i = 0; buf[i] != '\0'; i += 1)
+		len += 1;
+
+	/* close */
 	res = close(fd);
 	if (res != 0)
 		exit(-1);
-	for (i = 0; buf[i] != '\0'; i += 1)
-	{
-		len += 1;
-	}
+	res = write(2, buf, len);
+	if (res != len)
+		return (0);
 	free(buf);
 
 	return (len);
