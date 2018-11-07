@@ -1,5 +1,5 @@
 #include "holberton.h"
-#define BUF_SIZE 10
+#define BUF_SIZE 1024
 
 /**
 * main - Entry point
@@ -10,7 +10,7 @@
 
 int main(int argc, char **argv)
 {
-	int fd, res, i;
+	int fd, fd1, res, i;
 	char *buf;
 
 	i = 0;
@@ -20,36 +20,13 @@ int main(int argc, char **argv)
 		exit(97);
 	}
 	/* open from */
-	fd = open(argv[1], O_RDONLY);
+	fd1 = open(argv[1], O_RDONLY);
 	/* make into a func */
-	if (fd == -1)
+	if (fd1 == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	buf = malloc(sizeof(char) * BUF_SIZE);
-	if (!buf)
-		return (0);
-
-	/* reads into buffer BUF_SIZE at a time until the whole file is read */
-	do {
-		res = read(fd, buf, BUF_SIZE);
-		i += res;
-		if (res == -1)
-		{
-			dprintf(2, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
-	} while (res == BUF_SIZE);
-
-	res = close(fd);
-	if (res == -1)
-	{
-		dprintf(2, "Error Can't close fd %i\n", fd);
-		exit(100);
-	}
-
-	/* open to */
 	fd = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 	if (fd == -1)
 	{
@@ -57,18 +34,37 @@ int main(int argc, char **argv)
 		exit(99);
 	}
 
-	res = write(fd, buf, i);
-	if (res != i)
-	{
-		dprintf(2, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+	buf = malloc(sizeof(char) * BUF_SIZE);
+	if (!buf)
+		return (0);
+
+	/* reads into buffer BUF_SIZE at a time until the whole file is read */
+	do {
+		res = read(fd1, buf, BUF_SIZE);
+		i += res;
+		if (res == -1)
+		{
+			dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+
+		res = write(fd, buf, res);
+		if (!res)
+		{
+			dprintf(2, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
+	} while (res == BUF_SIZE);
+buf[i] = '\0';
+
+	/* open to */
+	res = close(fd);
 	if (res == -1)
 	{
-		dprintf(2, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
+		dprintf(2, "Error Can't close fd %i\n", fd);
+		exit(100);
 	}
-	res = close(fd);
+	res = close(fd1);
 	if (res == -1)
 	{
 		dprintf(2, "Error Can't close fd %i\n", fd);
