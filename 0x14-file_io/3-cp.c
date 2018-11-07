@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
 	/* reads into buffer BUF_SIZE at a time until the whole file is read */
 	do {
-		res = read(fd, buf + i, BUF_SIZE);
+		res = read(fd, buf, BUF_SIZE);
 		i += res;
 		if (res == -1)
 		{
