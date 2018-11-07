@@ -54,7 +54,8 @@ int main(int argc, char **argv)
 */
 void err_98(int fd, char *buf, char *argv)
 {
-	if (!fd)
+
+	if (fd < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
 		free(buf);
@@ -70,7 +71,7 @@ void err_98(int fd, char *buf, char *argv)
 */
 void err_99(int fd, char *buf, char *argv)
 {
-	if (!fd)
+	if (fd < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv);
 		free(buf);
@@ -81,10 +82,11 @@ void err_99(int fd, char *buf, char *argv)
 * err_100 - checks err_100
 * @fd: the return value to check
 * @buf: needed to free if exit
+* @argv: holds the file to print
 */
 void err_100(int fd, char *buf)
 {
-	if (fd == -1)
+	if (fd < 0)
 	{
 		dprintf(STDERR_FILENO, "Error Can't close fd %i\n", fd);
 		free(buf);
