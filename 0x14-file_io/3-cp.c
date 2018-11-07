@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 		err_98(res1, buf, argv[1]);
 		res2 = write(fd, buf, res1);
 		err_99(res2, buf, argv[2]);
-	} while (res1 == BUF_SIZE);
+	} while (res1 >= BUF_SIZE);
 
 	/* close */
 	res1 = close(fd);
@@ -82,7 +82,6 @@ void err_99(int fd, char *buf, char *argv)
 * err_100 - checks err_100
 * @fd: the return value to check
 * @buf: needed to free if exit
-* @argv: holds the file to print
 */
 void err_100(int fd, char *buf)
 {
