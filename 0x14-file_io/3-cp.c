@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 	/* reads into buffer BUF_SIZE at a time until the whole file is read */
 	do {
 		res1 = read(fd1, buf, BUF_SIZE);
-		if (res == 0)
+		if (res1 == 0)
 			break;
 		i += res1;
 		if (res1 == -1)
