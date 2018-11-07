@@ -10,7 +10,7 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd, len;
+	int fd, len, i;
 	int res;
 	char *buf;
 
@@ -28,10 +28,12 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	/* read into buf */
-	len = read(fd, buf, letters);
-	if (!len)
+	res = read(fd, buf, letters);
+	if (!res)
 		return (0);
-	buf[len] = '\0';
+	buf[letters] = '\0';
+	for (i = 0; buf[i] != '\0'; i += 1)
+	len += 1;
 
 	/* close */
 	res = close(fd);
