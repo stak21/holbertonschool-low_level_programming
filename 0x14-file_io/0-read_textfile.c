@@ -29,10 +29,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	buf[letters] = '\0';
 	if ((size_t)write(2, buf, letters) != letters)
 		return (0);
-	
+
 	res = close(fd);
 	if (res != 0)
-		return (0);
+		exit(-1);
 	for (i = 0; buf[i] != '\0'; i += 1)
 	{
 		len += 1;
