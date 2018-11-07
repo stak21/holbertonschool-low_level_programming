@@ -87,7 +87,7 @@ void err_100(int fd, char *buf)
 {
 	if (fd < 0)
 	{
-		dprintf(STDERR_FILENO, "Error Can't close fd %i\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd);
 		free(buf);
 		exit(100);
 	}
