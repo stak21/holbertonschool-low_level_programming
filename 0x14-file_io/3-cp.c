@@ -15,7 +15,7 @@ int main(int argc,char **argv)
 	i = 0;
 	if (argc != 3)
 	{
-		dprintf(2, "Usage: cp file_from filen_to\n");
+		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	/* open from */
