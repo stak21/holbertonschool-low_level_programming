@@ -41,7 +41,6 @@ char  **strtow(char *str)
 		i += 1;
 	}
 	i = 0;
-	printf("%i\n", count);
 	words = malloc(sizeof(char *) * (count + 1));
 	if (!words)
 	{
@@ -80,7 +79,6 @@ char  **strtow(char *str)
 		i += 1;
 	}
 
-	printf("%i\n", count);
 	words[count] = NULL;
 	return (words);
 }
