@@ -22,8 +22,7 @@ char  **strtow(char *str)
 
 	if (str == NULL || *str == '\0' || *str == ' ')
 		return (NULL);
-	do
-	{
+	do {
 		if (str[i] == ' ' || str[i + 1] == '\0')
 		{
 			if (found)
@@ -53,7 +52,6 @@ char  **strtow(char *str)
 			{
 				if (str[i + 1] == '\0')
 					i += 1;
-				printf("start: %i\n", i - start + 1);
 				cpy_str(i - start, str + start, words + count);
 				if (!(words + count))
 					return (NULL);
