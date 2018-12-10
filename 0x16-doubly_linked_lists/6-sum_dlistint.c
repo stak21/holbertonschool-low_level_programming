@@ -15,7 +15,7 @@ int sum_dlistint(dlistint_t *head)
 
 	if (head == NULL)
 		return (0);
-	
+
 	cur_ptr = head;
 	sum = 0;
 
