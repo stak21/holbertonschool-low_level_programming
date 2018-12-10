@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
 /**
@@ -45,7 +43,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		newnode->next = *h;
 		newnode->prev = NULL;
 		(*h)->prev = newnode;
-		(*h) = newnode;
+		*h = newnode;
 		return (newnode);
 	}
 	newnode->next = cur_ptr;
