@@ -1,14 +1,2 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "holberton.h"
-
-/**
-*
-*
-*/
-
-()
-{
-
-	return (0);
-}
+#!/bin/bash
+gcc -g -fPIC -Wall -Werror -Wextra -pedantic *.c -shared -o liball.so
