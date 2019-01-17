@@ -17,22 +17,33 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0;
 	char *copy_value = NULL;
+	char *copy_key = NULL;
 	hash_node_t *node = NULL;
 	hash_node_t *tmp = NULL;
 
-	index = key_index((const unsigned char *)key, ht->size);
-	copy_value = strdup(value);
-
 	if (!ht)
 		return (0);
-	node = malloc(sizeof(hash_node_t));
-	if (!node)
+
+	index = key_index((const unsigned char *)key, ht->size);
+	copy_value = strdup(value);
+	if (!copy_value)
+		return (0);
+	copy_key = strdup(key);
+	if (!copy_key)
 	{
 		free(copy_value);
 		return (0);
 	}
 
-	node->key = strdup(key);
+	node = malloc(sizeof(hash_node_t));
+	if (!node)
+	{
+		free(copy_value);
+		free(copy_key);
+		return (0);
+	}
+
+	node->key = copy_key;
 	node->value = copy_value;
 	node->next = NULL;
 
