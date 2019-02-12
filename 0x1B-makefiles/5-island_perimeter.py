@@ -6,9 +6,8 @@ def island_perimeter(grid):
     """ Returns the perimeter of the island """
     perimeter = 0
 
-    if not isinstance(grid, list):
-        return 0
-    if grid is None:
+
+    if grid is None or not isinstance(grid, list):
         return 0
     for row in range(len(grid)):
         for element in range(len(grid[row])):
@@ -28,18 +27,16 @@ def island_perimeter(grid):
                     pass
                 try:
                     if row - 1 < 0:
-                        continue
-                    if grid[row - 1][element] == 1:
-                        print("top")
+                        pass
+                    elif grid[row - 1][element] == 1:
                         perimeter -= 1
                 except Exception:
                     pass
                 try:
                     if row + 1 >= len(grid):
-                        continue
-                    if grid[row + 1][element] == 1:
+                        pass
+                    elif grid[row + 1][element] == 1:
                         perimeter -= 1
-                        print("bottom")
                 except Exception:
                     pass
 
