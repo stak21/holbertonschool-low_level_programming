@@ -4,21 +4,15 @@
  * binary_trees_ancestor - Find the lowest common ancestor of two nodes
  * @first: The first node to check the ancestors of
  * @second: The second node to check the ancestors of
+ * Return: the ancestor node or NULL
  */
 
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,\
-		const binary_tree_t *second)
+bt *binary_trees_ancestor(const bt *first, const bt *second)
 {
-	unsigned int f_depth = 0;
-	unsigned int s_depth = 0;
-	unsigned int d_depth = 0;
+	unsigned int f_depth, s_depth, d_depth;
+	f_depth = s_depth = d_depth = 0;
 	unsigned int i;
-
-	const binary_tree_t *f;
-	const binary_tree_t *s;
-	const binary_tree_t *lower;
-	const binary_tree_t *other;
-
+	const bt *f, *s, *lower, *other;
 
 	if (!first || !second)
 		return;
@@ -30,14 +24,14 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,\
 		f = f->parent;
 		f_depth += 1;
 	}
-		
+
 	while (s->parent)
 	{
 		s = s->parent;
 		s_depth += 1;
 	}
 
-	d_depth = f_depth > s_depth ? f_depth - s_depth : s_depth - f_depth;	
+	d_depth = f_depth > s_depth ? f_depth - s_depth : s_depth - f_depth;
 	lower = f_depth > s_depth ? first : second;
 	other = lower == first ? second : first;
 
@@ -50,7 +44,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,\
 		lower = lower->parent;
 	}
 	if (other == lower)
-		return ((binary_tree_t*)lower);
+		return ((bt *)lower);
 	else
 		return (NULL);
 }
