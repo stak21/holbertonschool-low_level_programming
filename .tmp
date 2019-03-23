@@ -1,0 +1,321 @@
+set nocompatible            " Disable vi compatibility
+
+filetype on                 " filetype must be 'on' before setting it 'off'
+                            "   otherwise it exits with a bad status and breaks
+                            "   git commit.
+filetype off                " force reloading *after* pathogen loaded
+
+"set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-scripts/bufkill.vim'
+Plugin 'easymotion/vim-easymotion' "usa: t/s/w/j/k
+Plugin 'tpope/vim-repeat' "Allows reptition of plugins
+Plugin 'tpope/vim-surround' "edits surrounds like () with cs/ds/yss/ysiw
+Plugin 'tpope/vim-fugitive' "git editor on file
+Plugin 'tpope/vim-unimpaired' "keymappings like [e for bubble
+Plugin 'mileszs/ack.vim' "grep file open
+Plugin 'vim-scripts/IndexedSearch' "shows the number of matches
+Plugin 'junkblocker/patchreview-vim' "reviews changes in a cwd
+Plugin 'scrooloose/syntastic' "linting
+Plugin 'scrooloose/nerdcommenter' "cs/cc/cu/cspace
+Plugin 'scrooloose/nerdtree' "opens your director for easy editing
+Plugin 'wincent/command-t'
+Plugin 'godlygeek/tabular' "Tabs things in order
+
+call vundle#end()
+
+syntax on
+filetype plugin indent on   " enable detection, plugins and indent
+
+" Local dirs (centralize everything)
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+
+let mapleader=","
+let maplocalleader=";"
+
+
+au Filetype python setlocal expandtab
+au Filetype c setlocal noexpandtab
+
+colorscheme badwolf
+set autoindent
+set number
+set showcmd
+set showmatch
+set wildmenu
+set wildignore+=*.DS_STORE,*.db,node_modules/**,*.jpg,*.png,*.gif
+set incsearch
+set hlsearch
+set paste
+set nopaste
+set pastetoggle=<f12>
+set autoindent smartindent
+set nowrap
+set textwidth=80
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set smartcase
+
+" --- history / file handling ---
+set history=999             " Increase history (default = 20)
+set undolevels=999          " Moar undo (default=100)
+set autoread                " reload files if changed externally
+
+" --- etc ---
+set laststatus=2            " Always show status line
+hi StatusLine ctermbg=black ctermfg=black
+set report=0
+set showmode
+set splitbelow splitright
+set title
+
+" add useful stuff to title bar (file name, flags, cwd)
+" based on @factorylabs
+if has('title') && (has('gui_running') || &title)
+    set titlestring=
+    set titlestring+=%f
+    set titlestring+=%h%m%r%w
+    set titlestring+=\ -\ %{v:progname}
+    set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}
+endif
+
+" use relative line number by default
+if exists('+relativenumber')
+  set relativenumber
+endif
+
+" --- folding---
+set foldmethod=manual       " manual fold
+
+" --- list chars ---
+" list spaces and tabs to avoid trailing spaces and mixed indentation
+" see key mapping at the end of file to toggle `list`
+set listchars=tab:▹\ ,trail:·,nbsp:⚋
+set fillchars=fold:-
+set list
+
+
+"Remapping
+:nnoremap K kk
+:nnoremap J jj
+:nnoremap <leader><space> :nohlsearch<CR>
+:nnoremap f ^
+:nnoremap j gj
+:nnoremap k gk
+:nnoremap F $
+:nnoremap L w
+:inoremap JK <esc>
+:inoremap jk <esc>
+:inoremap Jk <esc>
+
+" -----------------------------------------------------------------------------
+" PLUGINS
+" -----------------------------------------------------------------------------
+"
+" --- NERDTree ----
+let NERDTreeIgnore=['.DS_Store']
+let NERDTreeShowBookmarks=0         "show bookmarks on startup
+let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
+let NERDTreeShowLineNumbers=0
+let NERDTreeMinimalUI=1
+noremap <leader>nt :NERDTreeToggle<CR>
+
+" --- NERDCommenter ---
+
+let NERDSpaceDelims=1               " space around delimiters
+let NERDRemoveExtraSpaces=1
+let g:NERDCustomDelimiters = {
+    \ 'scss': { 'left': '//' }
+\ }
+
+" --- Syntastic : Linting / Error check ---
+let g:syntastic_auto_loc_list=2
+let g:syntastic_check_on_open=1
+" close/open location list (errors)
+noremap <silent><leader>lc :lcl<CR>
+noremap <silent><leader>lo :Errors<CR> :lw<CR>
+noremap <silent><leader>ln :lnext<CR>
+noremap <silent><leader>lp :lprev<CR>
+
+" --- autocomplete / supertab / jscomplete ---
+set infercase
+set completeopt=longest,menuone
+set omnifunc=syntaxcomplete#Complete
+set completefunc=syntaxcomplete#Complete
+set complete=.,w,b,u,U,t,i,d
+" see [autocommands] at the end for more autocomplete settings
+
+" --- Command-T ---
+let g:CommandTMaxFiles=2000
+let g:CommandTMaxHeight=12
+noremap <silent> <leader>tt :CommandT<CR>
+noremap <silent> <leader>bt :CommandTBuffer<CR>
+noremap <silent> <leader>tf :CommandTFlush<CR>
+
+" --- LustyJuggler ---
+let g:LustyJugglerSuppressRubyWarning = 1  " avoid error if running on terminalo
+
+" --- EasyMotion ---
+let g:EasyMotion_leader_key = '<Leader>m'
+" lets make <leader>F and <leader>f use easymotion by default
+let g:EasyMotion_mapping_f = '<leader>f'
+let g:EasyMotion_mapping_F = '<leader>F'
+
+
+" Remapping for easymotion
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+
+"search replace in easymotion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+" Gif config
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when 
+" --- Tabular.vim ---
+noremap <silent> <leader>t: :Tabularize /:<CR>
+noremap <silent> <leader>t= :Tabularize /=<CR>
+noremap <silent> <leader>t, :Tabularize /,<CR>
+noremap <silent> <leader>t{ :Tabularize /{<CR>
+noremap <silent> <leader>t" :Tabularize /"<CR>
+noremap <silent> <leader>t' :Tabularize /'<CR>
+noremap <silent> <leader>t[ :Tabularize /[<CR>
+noremap <silent> <leader>t/ :Tabularize ///<CR>
+noremap <silent> <leader>t\| :Tabularize /\|<CR>
+
+" --- Strips trailing whitespace ---
+function! StripWhitespace ()
+	let save_cursor = getpos(".")
+	let old_query = getreg('/')
+	:%s/\s\+$//e
+	call setpos('.', save_cursor)
+	call setreg('/', old_query)
+endfunction
+
+:noremap <leader>ss :call StripWhitespace()<CR>
+
+" --- toggle autocomplete behavior and word delimiters ---
+
+function! KeywordsAll()
+    setl iskeyword=@,48-57,192-255,\@,\$,%,-,_
+endfunc
+
+function! KeywordsBasic()
+    setl iskeyword=@,48-57,192-255
+endfunc
+
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing
+nnoremap S i<cr><esc><right>
+
+" Bubble single lines, similar to Eclipse (requires unimpaired.vim)
+nmap <C-S-Up> [e
+nmap <C-S-Down> ]e
+
+" Bubble multiple lines, similar to Eclipse (requires unimpaired.vim)
+vmap <C-S-Up> [egv
+vmap <C-S-Down> ]egv
+
+" improve the 'search word under cursor' behavior
+nnoremap * :silent call KeywordsAll()<CR> *
+nnoremap # :silent call KeywordsAll()<CR> #
+
+" --- COMMON STUFF / HELPERS ---
+
+" Toggle show tabs and trailing spaces
+nnoremap <leader>c :set nolist!<CR>
+
+" Clear the search highlight
+nnoremap <silent> \ :silent nohlsearch<CR>
+
+" text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
+nnoremap <leader>tw gqip
+nnoremap <leader>nw :set nowrap<CR>
+
+" Pull word under cursor into LHS of a substitute (find and replace)
+nnoremap <leader>rr :silent call KeywordsAll()<CR> :%s#\<<C-r>=expand("<cword>")<CR>\>#
+" Visually select the text that was last edited/pasted
+nnoremap <leader>v `[v`]
+" fast Ack
+nnoremap <leader>a :tab split<CR>:Ack<Space>
+nnoremap <leader>aw :silent call KeywordsAll()<CR> :tab split<CR>:Ack<cword><CR> :silent call KeywordsBasic()<CR>
+
+" Toggle spelling hints
+nnoremap <silent> <leader>ts :set spell!<CR>
+
+
+" Move between splits (windows)
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Move windows around (only works on same row)
+noremap <C-S-Right> <C-w>r
+noremap <C-S-Left> <C-w>R
+" close window
+noremap <leader>q :clo<CR>
+
+" delete buffer but keep window open (requires bufkill.vim)
+map <leader>bd :BD<CR>
+
+" smarter next/prev buffer (requires bufkill.vim)
+map <leader>bn :BF<CR>
+map <leader>bp :BB<CR>
+
+" resize splits (http://vim.wikia.com/wiki/Resize_splits_more_quickly)
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+
+" http://vimcasts.org/episodes/creating-colorschemes-for-vim/
+nnoremap <leader>sh :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+" -----------------------------------------------------------------------------
+" FILE HANDLING
+" -----------------------------------------------------------------------------
+
+" [autocommands] borrowed from @bit-theory vimfiles and edited
+augroup mm_buf_cmds
+    " clear commands before resetting
+    autocmd!
+
+    " when vimrc is edited, reload it
+    autocmd bufwritepost .gvimrc source %
+    autocmd bufwritepost .vimrc source %
+
+
+    " Enable omnicomplete for supported filetypes
+    autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+
+    " make sure `complete` works as expected for CSS class names without
+    " messing with motions (eg. '.foo-bar__baz') and we make sure all
+    " delimiters (_,-,$,%,.) are treated as word separators outside insert mode
+    autocmd InsertEnter,BufLeave * :silent call KeywordsAll()
+    autocmd InsertLeave,BufEnter * :silent call KeywordsBasic()
+	" highlight char at column 81 (textwidth + 1)
+    autocmd BufEnter * match OverLength /\%81v/
+
+
+
+" Trailing white space (strip spaces)
