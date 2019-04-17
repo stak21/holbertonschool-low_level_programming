@@ -16,7 +16,7 @@
 
 int binary_search(int *array, size_t size, int value)
 {
-	size_t i, mid, max, min;
+	size_t i, mid;
 	int index = -1;
 	size_t even = 0;
 
