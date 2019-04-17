@@ -19,7 +19,7 @@ int binary_search(int *array, size_t size, int value)
 	int i, mid, max, min;
 	int index = -1;
 	int even = 0;
-		
+
 	if (!array)
 		return (-1);
 	i = 0;
@@ -31,7 +31,7 @@ int binary_search(int *array, size_t size, int value)
 	printf("Searching in array: ");
 	for (i = 0; i < size - 1; i += 1)
 		printf("%i, ", array[i]);
-	printf("%i\n", array[i]);	
+	printf("%i\n", array[i]);
 
 	if (array[mid] == value)
 		return (mid);
