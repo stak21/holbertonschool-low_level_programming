@@ -20,7 +20,7 @@ int binary_search(int *array, size_t size, int value)
 	int index = -1;
 	size_t even = 0;
 
-	if (!array)
+	if (!array && size <= 0)
 		return (-1);
 	i = 0;
 
