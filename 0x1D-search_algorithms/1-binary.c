@@ -45,8 +45,6 @@ int binary_search(int *array, size_t size, int value)
 	else if (array[mid] < value)
 	{
 		index = binary_search(array + mid + even, size - mid - even, value);
-		if (index != -1)
-			index += mid + even;
 	}
 
 	return (index);
