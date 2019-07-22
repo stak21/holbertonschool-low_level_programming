@@ -4,15 +4,15 @@
 
 This project in the low_level_programming series is about:
 
-*General
+* General
 
-*What is a search algorithm
+* What is a search algorithm
 
-*What is a linear search
+* What is a linear search
 
-*What is a binary search
+* What is a binary search
 
-*What is the best search algorithm to use depending on your needs
+* What is the best search algorithm to use depending on your needs
 
 ---
 File|Task
